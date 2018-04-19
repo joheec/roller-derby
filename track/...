@@ -1,0 +1,54 @@
+var mysql = require('mysql')
+var connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'rollerderby',
+    password: 'southside',
+    database: 'derby_girls'
+});
+
+connection.connect(function(err) {
+    if (err) throw err
+    console.log('Now connected')
+})
+connection.query(
+    `CREATE TABLE login (
+        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        derbyName VARCHAR(30) NOT NULL,
+        password VARCHAR(30) NOT NULL,
+        regDate TIMESTAMP
+    )`, function (err, rows, fields) {
+    if (err) throw err
+        console.log('ERROR creating login table')
+    }
+)
+
+connection.query(
+    `CREATE TABLE requirements (
+        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        label VARCHAR(30) NOT NULL,
+        description VARCHAR(30) NOT NULL,
+        regDate TIMESTAMP
+    )`, function (err, rows, fields) {
+        if (err) throw err
+        console.log('ERROR creating requirements table')
+    }
+)
+
+
+connection.query(
+    `INSERT INTO requirements (label, description, NOW())
+        VALUES ('Classes', 'Attend 5 Fresh Meat/Advance Classes', NOW()),
+        VALUES('Laps', '10 Lap, 4 Fall in 2:10 or Less', NOW()),
+        VALUES('Scrimmages', 'Participate 4 Scrimmages', NOW()),
+        VALUES('Banked Track', 'Attend a Banked Track 101 Class', NOW()),
+        VALUES('Sticky Feet', 'Sticky Feet. 60 Seconds for 16 Cone Touches', NOW()),
+        VALUES('Grape Vines', 'Grape Vines. 60 Seconds for 16 Cone Touches', NOW()),
+        VALUES('Plow Stops', 'Plow Stops. 60 Seconds for 20 Cone Touches', NOW()),
+        VALUES('Turn Around Stops', 'Turn Around Stops. 60 Seconds for 20 Cone Touches', NOW()),
+    )`, function (err, rows, fields) {
+        if (err) throw err
+        console.log('ERROR inserting into requirements table')
+    }
+)
+
+connection.end();
