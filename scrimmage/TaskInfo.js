@@ -6,9 +6,10 @@ export default class TaskInfoScreen extends React.Component {
         super();
     }
     render() {
-        const { activity, records } = this.props.navigation.state.params;
+        const { activity, description, records } = this.props.navigation.state.params;
         return <View style={ styles.container }>
-            <Text style={ styles.header }>{ activity }</Text>
+            <Text style={ styles.activity }>{ activity }</Text>
+            <Text style={ styles.description }>{ description }</Text>
             <ScrollView style={ styles.entries }>
                 { records.map(({ date, record }) => (
                     <View key={ date } style={ styles.entry }>
@@ -26,12 +27,17 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#F2DAFF',
     },
-    header: {
+    activity: {
         marginTop: 30,
         textAlign: 'center',
         color: '#486DB2',
         fontSize: 30,
         fontWeight: 'bold',
+    },
+    description: {
+        textAlign: 'center',
+        color: '#486DB2',
+        fontSize: 20,
     },
     entries: {
         flexDirection: 'column',

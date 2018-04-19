@@ -66,6 +66,7 @@ class Task extends React.Component {
             onPress={() => (
                 this.props.navigate('TaskInfo', {
                     activity: 'Activity',
+                    description: 'Description',
                     records: [
                         { date: '01/01/01', record: '2:14' },
                         { date: '02/02/02', record: '2:24' },
