@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Image, Text, TextInput, TouchableOpacity } from 'react-native';
+import { DefaultScreen } from '../../presentational/DefaultComponents';
 
 export default class LoginScreen extends React.Component {
     constructor() {
@@ -12,9 +13,9 @@ export default class LoginScreen extends React.Component {
     }
     render() {
         const { navigate } = this.props.navigation;
-        return <View style={ styles.page }>
+        return <DefaultScreen>
             <Image 
-                source={ require('./logo.png') }
+                source={ require('../../logo.png') }
                 style={ styles.logo }
             />
             <TextInput
@@ -31,13 +32,13 @@ export default class LoginScreen extends React.Component {
             <TouchableOpacity
                 onPress={() => {
                     this.checkLogin();
-                    navigate('Main');
+                    navigate('UserType');
                 }}>
                 <Text style={ styles.button }>
                     Submit
                 </Text>
             </TouchableOpacity>
-        </View>; 
+        </DefaultScreen>; 
     }
     checkLogin() {
         // Alert.alert(this.state.derbyName);
@@ -57,11 +58,6 @@ export default class LoginScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    page: {
-        flex: 1,
-        alignItems: 'center',
-        backgroundColor: '#ffffff',
-    },
     logo: {
         margin: 20,
         height: 200,

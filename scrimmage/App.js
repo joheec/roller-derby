@@ -1,28 +1,13 @@
-import { StackNavigator, SwitchNavigator } from 'react-navigation';
-import LoginScreen from './Login';
-import MainStack from './Main';
-import TaskInfoScreen from './TaskInfo';
+import { SwitchNavigator } from 'react-navigation';
 
-const AuthStack = StackNavigator({ Login: { screen: LoginScreen }});
-
-const AppStack = StackNavigator(
-    {
-        Main: {
-            screen: MainStack,
-        },
-        TaskInfo: {
-            screen: TaskInfoScreen,
-        },
-    },
-    {
-        mode: 'modal',
-        headerMode: 'none',
-    }
-);
+import AuthStack from './container/auth';
+import AdminStack from './container/admin';
+import PersonalStack from './container/personal';
 
 export default SwitchNavigator({
     Auth: AuthStack,
-    App: AppStack,
+    Admin: AdminStack,
+    Personal: PersonalStack,
 }, {
     initialRouteName: 'Auth',
 });

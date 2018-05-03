@@ -1,8 +1,12 @@
 import React from 'react';
-import { StyleSheet, ScrollView, View, Text } from 'react-native';
+import { StyleSheet, TouchableOpacity, ScrollView, View, Text } from 'react-native';
 
-export default class AdminScreen extends React.Component {
+export default class UserSelection extends React.Component {
+    constructor() {
+        super();
+    }
     render() {
+        const { navigate } = this.props.navigation;
         const girls = [
             {
                 name: 'MerMace',
@@ -15,25 +19,15 @@ export default class AdminScreen extends React.Component {
                 selected: true,
             }
         ];
-        return <View style={ styles.container }>
-            <ScrollView>
+        return <ScrollView>
                 { girls.map(girl => <View style={ styles.option }>
                     <Text style={ styles.text }>{ girl.name }</Text>
                 </View>)}
-            </ScrollView>
-        </View>;
+            </ScrollView>;
     }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        marginTop: 30,
-        marginBottom: 50,
-        marginLeft: 25,
-        marginRight: 25,
-        flexDirection: 'column',
-        flex: 1,
-    },
     option: {
         flex: 1,
         margin: 10,
